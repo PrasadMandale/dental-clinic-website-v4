@@ -3594,9 +3594,18 @@
     SERVICES.forEach(s => {
       sg.innerHTML += `<div class="svc-card">
     <div class="svc-img-wrap">
-      <img src="${s.img}" alt="${s.title}" class="svc-img" loading="lazy"/>
-      <div class="svc-img-overlay"></div>
-    </div>
+  ${s.img.endsWith('.mp4')
+          ? `
+        <video class="svc-img" autoplay muted loop playsinline>
+          <source src="${s.img}" type="video/mp4">
+        </video>
+      `
+          : `
+        <img src="${s.img}" alt="${s.title}" class="svc-img" loading="lazy"/>
+      `
+        }
+  <div class="svc-img-overlay"></div>
+</div>
     <div class="svc-card-body">
       <div class="svc-icon-wrap"><i data-lucide="${s.icon}" class="svc-icon" width="20" height="20"></i></div>
       <h3 class="svc-title">${s.title}</h3>
