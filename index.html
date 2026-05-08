@@ -112,7 +112,7 @@
       .hero-content {
         gap: 40px;
       }
-      
+
       .hero-stats {
         gap: 32px;
       }
@@ -2307,7 +2307,7 @@
       .booking-left {
         order: 2;
       }
-      
+
       .booking-info {
         margin-top: 0;
         display: grid;
@@ -2318,7 +2318,8 @@
 
     @media(max-width:768px) {
       section {
-        padding: 40px 0; /* Reduced gaps between sections */
+        padding: 40px 0;
+        /* Reduced gaps between sections */
       }
 
       #theme-toggle {
@@ -2365,7 +2366,8 @@
       }
 
       .btn-nav-book {
-        display: none; /* Hide in navbar on mobile per request for Logo-Hamburger only */
+        display: none;
+        /* Hide in navbar on mobile per request for Logo-Hamburger only */
       }
 
       .nav-links {
@@ -2381,7 +2383,8 @@
       .hero-content {
         grid-template-columns: 1fr;
         padding: 0 20px;
-        padding-top: 50px; /* Compact hero top space */
+        padding-top: 50px;
+        /* Compact hero top space */
         gap: 32px;
         text-align: center;
       }
@@ -2412,8 +2415,9 @@
         gap: 12px;
         margin-bottom: 12px;
       }
-      
-      .btn-primary, .btn-outline-white {
+
+      .btn-primary,
+      .btn-outline-white {
         padding: 11px 20px;
         font-size: 0.8rem;
         width: 100%;
@@ -2433,15 +2437,16 @@
 
       .hero-stats {
         display: grid;
-        grid-template-columns: 1fr 1fr; /* 2x2 Grid per request */
+        grid-template-columns: 1fr 1fr;
+        /* 2x2 Grid per request */
         gap: 16px;
         margin-top: 32px;
         max-width: 500px;
         margin-left: auto;
         margin-right: auto;
       }
-      
-      .hero-stats > div {
+
+      .hero-stats>div {
         background: rgba(255, 255, 255, 0.03);
         backdrop-filter: blur(10px);
         -webkit-backdrop-filter: blur(10px);
@@ -2453,11 +2458,11 @@
         transition: transform 0.3s ease, background 0.3s ease;
       }
 
-      .hero-stats > div:hover {
+      .hero-stats>div:hover {
         background: rgba(255, 255, 255, 0.06);
         transform: translateY(-4px);
       }
-      
+
       .hero-stat-num {
         font-size: 1.6rem;
         margin-bottom: 4px;
@@ -2481,7 +2486,8 @@
       }
 
       .svc-card {
-        flex: 0 0 280px; /* Slightly wider for better fit */
+        flex: 0 0 280px;
+        /* Slightly wider for better fit */
         max-width: 85vw;
       }
 
@@ -2510,14 +2516,14 @@
         margin: 0 auto 16px;
         opacity: 0.9;
       }
-      
+
       .about-highlights {
         grid-template-columns: 1fr;
         max-width: 320px;
         margin: 0 auto 24px;
         gap: 10px;
       }
-      
+
       .about-cta {
         justify-content: center;
         gap: 12px;
@@ -2528,7 +2534,7 @@
         bottom: -15px;
         padding: 10px 14px;
       }
-      
+
       .about-exp-num {
         font-size: 1.6rem;
       }
@@ -2538,16 +2544,17 @@
         gap: 32px;
         text-align: center;
       }
-      
+
       .why-item {
         text-align: left;
         padding: 16px;
       }
-      
+
       .why-stats {
         max-width: 500px;
         margin: 24px auto 0;
-        grid-template-columns: 1fr 1fr; /* 2x2 Grid per request */
+        grid-template-columns: 1fr 1fr;
+        /* 2x2 Grid per request */
         gap: 12px;
       }
 
@@ -2571,7 +2578,7 @@
         gap: 32px;
         text-align: center;
       }
-      
+
       .footer-social {
         justify-content: center;
       }
@@ -2585,16 +2592,16 @@
       .hero-content {
         padding-top: 40px;
       }
-      
+
       .hero-stats {
         gap: 10px;
         margin-top: 24px;
       }
-      
+
       .hero-stat-num {
         font-size: 1.4rem;
       }
-      
+
       .nav-logo-title {
         font-size: 0.68rem;
       }
@@ -2611,17 +2618,19 @@
       .chip-value {
         font-size: 0.65rem;
       }
-      
+
       .hero-card-wrap {
         padding: 10px 20px 25px 10px;
       }
 
       #wa-float {
-        bottom: 100px; /* Moved slightly up */
-        right: 20px; /* Moved slightly inward */
+        bottom: 100px;
+        /* Moved slightly up */
+        right: 20px;
+        /* Moved slightly inward */
         z-index: 9991;
       }
-      
+
       .wa-fab {
         width: 44px;
         height: 44px;
@@ -2630,7 +2639,7 @@
       .hero-title-line1 {
         font-size: 1.4rem;
       }
-      
+
       .hero-title-line2 {
         font-size: 1rem;
       }
@@ -2681,7 +2690,12 @@
       }
 
       /* Reduce glassmorphism blur/glow for cleaner luxury look */
-      .nav-container, .hero-card, .floating-chip, .form-card, .svc-card, .hero-stats > div {
+      .nav-container,
+      .hero-card,
+      .floating-chip,
+      .form-card,
+      .svc-card,
+      .hero-stats>div {
         backdrop-filter: blur(6px);
         -webkit-backdrop-filter: blur(6px);
       }
@@ -3726,35 +3740,35 @@
       {
         icon: 'zap',
         // Root canal: dental drill / endodontic procedure
-        img: 'images/root-canal.jpg',
+        img: 'images/root-canal.mp4',
         title: 'Root Canal Treatment',
         desc: 'Painless, single-visit root canal using advanced rotary systems to save your natural tooth.'
       },
       {
         icon: 'smile',
         // Braces: close-up of metal braces on teeth
-        img: 'images/braces.jpg',
+        img: 'images/braces.mp4',
         title: 'Braces & Clear Aligners',
         desc: 'Straighten your smile with metal braces, ceramic braces, or invisible clear aligners.'
       },
       {
         icon: 'anchor',
         // Dental implant: titanium implant model / oral surgery
-        img: 'images/implant.webp',
+        img: 'images/implant.mp4',
         title: 'Dental Implants',
         desc: 'Titanium implants that look, feel and function exactly like natural teeth — a permanent solution.'
       },
       {
         icon: 'sun',
         // Teeth whitening: bright white smile / whitening tray
-        img: 'images/cleaning.jpg',
+        img: 'images/cleaning.mp4',
         title: 'Teeth Whitening',
         desc: 'Professional in-office whitening that brightens your smile by several shades in under an hour.'
       },
       {
         icon: 'shield',
         // Crown & Bridge: porcelain dental crown on mold
-        img: 'images/crown and bridge.jpg',
+        img: 'images/crown and bridge.mp4',
         title: 'Dental Crown & Bridge',
         desc: 'High-quality porcelain crowns and bridges that restore strength, function and aesthetics.'
       },
