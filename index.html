@@ -15,7 +15,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
-    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,700&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@400;700;900&family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&family=DM+Serif+Display:ital@0;1&display=swap"
     rel="stylesheet" />
   <!-- Icons -->
   <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
@@ -54,19 +54,33 @@
       --border: #e3d5a4;
       --card: #ffffff;
       --heading-font: 'Montserrat', sans-serif;
+      --number-font: 'Bodoni Moda', serif;
     }
 
     [data-theme="dark"] {
-      --bg: #5a4b37;
-      --surface: #5a4b37;
-      --surface-alt: #8b7556;
-      --text: #f2e8c4;
-      --text-2: #e3d5a4;
-      --text-3: #cbb991;
-      --border: #8b7556;
-      --card: #5a4b37;
-      --shadow-md: 0 8px 32px rgba(90, 75, 55, 0.4);
-      --shadow-lg: 0 16px 48px rgba(90, 75, 55, 0.5);
+      --bg: #1a1510;
+      --surface: #231e16;
+      --surface-alt: #2e271d;
+      --text: #f2e8d4;
+      --text-2: #d4c9b2;
+      --text-3: #a89878;
+      --border: #3d3428;
+      --card: #2a2319;
+      --blue-50: #3d3428;
+      --blue-100: #4a3f30;
+      --blue-200: #6b5c45;
+      --blue-400: #b39f7a;
+      --blue-500: #c4ad8a;
+      --blue-600: #E6C89C;
+      --blue-700: #f0d7b3;
+      --blue-900: #E6C89C;
+      --teal-400: #d4b584;
+      --teal-500: #c4ad8a;
+      --gold: #E6C89C;
+      --accent: #f0d7b3;
+      --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.3);
+      --shadow-md: 0 8px 32px rgba(0, 0, 0, 0.45);
+      --shadow-lg: 0 16px 48px rgba(0, 0, 0, 0.55);
     }
 
     /* Premium Olive Theme for Desktop */
@@ -103,7 +117,7 @@
       }
 
       .counter-section {
-        background: linear-gradient(135deg, #5a4b37 0%, #8b7556 50%, #b39f7a 100%) !important;
+        background: linear-gradient(135deg, #5a4b37 0%, #8b7556 50%, #b39f7a 100%);
       }
     }
 
@@ -342,6 +356,7 @@
       text-decoration: none;
       flex: 1;
       justify-content: flex-start;
+      position: relative;
     }
 
     .nav-logo-img {
@@ -703,6 +718,63 @@
       font-size: clamp(1.8rem, 3.5vw, 2.8rem);
       font-weight: 700;
       color: white;
+      position: relative;
+      filter: drop-shadow(0 0 12px rgba(230, 200, 156, 0.3))
+             drop-shadow(0 0 40px rgba(230, 200, 156, 0.12));
+      animation: heroTitleGlow 4s ease-in-out infinite;
+    }
+
+    .hero-title-line1::before {
+      content: '';
+      position: absolute;
+      inset: -20px -30px;
+      background: radial-gradient(ellipse at center, rgba(230, 200, 156, 0.08) 0%, transparent 70%);
+      z-index: -1;
+      border-radius: 50%;
+      animation: heroGlowSpread 4s ease-in-out infinite;
+      pointer-events: none;
+    }
+
+    @keyframes heroTitleGlow {
+      0%, 100% {
+        filter: drop-shadow(0 0 12px rgba(230, 200, 156, 0.3))
+               drop-shadow(0 0 40px rgba(230, 200, 156, 0.12));
+      }
+      50% {
+        filter: drop-shadow(0 0 20px rgba(230, 200, 156, 0.45))
+               drop-shadow(0 0 60px rgba(230, 200, 156, 0.2));
+      }
+    }
+
+    @keyframes heroGlowSpread {
+      0%, 100% { transform: scale(1); opacity: 0.6; }
+      50% { transform: scale(1.15); opacity: 1; }
+    }
+
+    /* Dark mode: more intense, luminous glow */
+    [data-theme="dark"] .hero-title-line1 {
+      filter: drop-shadow(0 0 16px rgba(230, 200, 156, 0.5))
+             drop-shadow(0 0 50px rgba(230, 200, 156, 0.2))
+             drop-shadow(0 0 100px rgba(230, 200, 156, 0.08));
+      animation: heroTitleGlowDark 4s ease-in-out infinite;
+    }
+
+    [data-theme="dark"] .hero-title-line1::before {
+      background: radial-gradient(ellipse at center, rgba(230, 200, 156, 0.12) 0%, rgba(230, 200, 156, 0.03) 50%, transparent 75%);
+      inset: -30px -50px;
+    }
+
+    @keyframes heroTitleGlowDark {
+      0%, 100% {
+        filter: drop-shadow(0 0 16px rgba(230, 200, 156, 0.5))
+               drop-shadow(0 0 50px rgba(230, 200, 156, 0.2))
+               drop-shadow(0 0 100px rgba(230, 200, 156, 0.08));
+      }
+      50% {
+        filter: drop-shadow(0 0 24px rgba(230, 200, 156, 0.65))
+               drop-shadow(0 0 70px rgba(230, 200, 156, 0.3))
+               drop-shadow(0 0 120px rgba(230, 200, 156, 0.12));
+      }
     }
 
     .hero-title-line2 {
@@ -785,16 +857,22 @@
     }
 
     .hero-stat-num {
-      font-family: var(--heading-font);
-      font-size: 2.8rem;
-      font-weight: 800;
+      font-family: var(--number-font);
+      font-size: 3.2rem;
+      font-weight: 700;
       color: var(--accent);
       line-height: 1;
-      letter-spacing: -1px;
+      font-style: italic;
     }
 
     .hero-stat-num span {
-      color: var(--accent);
+      font-family: var(--heading-font);
+      font-size: 0.7em;
+      vertical-align: middle;
+      margin-left: 2px;
+      color: var(--teal-400);
+      font-style: normal;
+      font-weight: 700;
     }
 
     .hero-stat-label {
@@ -952,11 +1030,20 @@
     }
 
     .chip-value {
-      font-size: .95rem;
+      font-family: var(--number-font);
+      font-size: 1.1rem;
       color: #1e293b;
       font-weight: 700;
       line-height: 1.2;
-      white-space: nowrap
+      white-space: nowrap;
+    }
+
+    .chip-value span {
+      font-family: var(--heading-font);
+      font-size: 0.8em;
+      color: var(--teal-500);
+      margin-left: 2px;
+      font-weight: 800;
     }
 
     /* ===== SECTIONS ===== */
@@ -1052,10 +1139,20 @@
     }
 
     .about-exp-num {
-      font-family: var(--heading-font);
-      font-size: 2.8rem;
+      font-family: var(--number-font);
+      font-size: 3.2rem;
       font-weight: 700;
-      line-height: 1
+      line-height: 1;
+      font-style: italic;
+    }
+
+    .about-exp-num span {
+      font-family: var(--heading-font);
+      font-size: 0.6em;
+      margin-left: 2px;
+      font-style: normal;
+      font-weight: 800;
+      opacity: 0.8;
     }
 
     .about-exp-label {
@@ -1484,11 +1581,20 @@
     }
 
     .wstat-num {
-      font-family: var(--heading-font);
-      font-size: 2.2rem;
+      font-family: var(--number-font);
+      font-size: 2.6rem;
       font-weight: 700;
       color: var(--text);
-      line-height: 1
+      line-height: 1;
+    }
+
+    .wstat-num span {
+      font-family: var(--heading-font);
+      font-size: 0.6em;
+      color: var(--teal-400);
+      vertical-align: middle;
+      margin-left: 4px;
+      font-weight: 800;
     }
 
     .wstat-label {
@@ -1738,9 +1844,10 @@
     }
 
     .binfo-value {
-      font-size: .95rem;
+      font-family: var(--number-font);
+      font-size: 1rem;
       color: white;
-      font-weight: 500
+      font-weight: 500;
     }
 
     .form-card {
@@ -1973,9 +2080,10 @@
     }
 
     .ccard-value {
-      font-size: .95rem;
+      font-family: var(--number-font);
+      font-size: 1rem;
       color: var(--text);
-      font-weight: 500
+      font-weight: 600;
     }
 
     .ccard-sub {
@@ -2122,9 +2230,10 @@
     }
 
     .ftiming-time {
-      font-size: .875rem;
+      font-family: var(--number-font);
+      font-size: .95rem;
       color: white;
-      font-weight: 500
+      font-weight: 500;
     }
 
     .footer-bottom {
@@ -2263,15 +2372,22 @@
     }
 
     .counter-num {
-      font-family: var(--heading-font);
-      font-size: clamp(2.8rem, 5vw, 4.5rem);
-      font-weight: 700;
+      font-family: var(--number-font);
+      font-size: clamp(3.2rem, 6vw, 5.2rem);
+      font-weight: 600;
       color: white;
-      line-height: 1
+      line-height: 1;
+      font-style: italic;
     }
 
     .counter-num span {
-      color: var(--teal-400)
+      font-family: var(--heading-font);
+      font-size: 0.6em;
+      vertical-align: middle;
+      margin-left: 4px;
+      color: var(--teal-400);
+      font-style: normal;
+      font-weight: 700;
     }
 
     .counter-label {
@@ -2794,12 +2910,21 @@
 
     /* 4. Gradient text shimmer on hero title */
     .hero-title .gradient-word {
-      background: linear-gradient(90deg, #fff 0%, #cbb991 25%, #b39f7a 50%, #cbb991 75%, #fff 100%);
+      background: linear-gradient(90deg, #fff 0%, #E6C89C 20%, #f0d7b3 40%, #fff 55%, #E6C89C 75%, #fff 100%);
       background-size: 300% 100%;
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
-      animation: gradientShimmer 4s ease-in-out infinite;
+      animation: gradientShimmer 5s ease-in-out infinite;
+    }
+
+    [data-theme="dark"] .hero-title .gradient-word {
+      background: linear-gradient(90deg, #f0d7b3 0%, #E6C89C 20%, #fff 45%, #E6C89C 65%, #f0d7b3 85%, #E6C89C 100%);
+      background-size: 300% 100%;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: gradientShimmer 5s ease-in-out infinite;
     }
 
     @keyframes gradientShimmer {
@@ -2976,7 +3101,7 @@
     }
 
     [data-theme="dark"] footer {
-      background: linear-gradient(180deg, #5a4b37 0%, #2c2419 100%);
+      background: linear-gradient(180deg, #1a1510 0%, #0f0d09 100%);
     }
 
     /* 15. Smooth page-load fade */
@@ -2993,6 +3118,462 @@
         opacity: 1;
       }
     }
+
+    /* ===== COMPREHENSIVE DARK MODE OVERRIDES ===== */
+
+    /* --- Navbar in dark mode --- */
+    [data-theme="dark"] #navbar.scrolled {
+      background: rgba(26, 21, 16, 0.95);
+      border-bottom: 1px solid rgba(230, 200, 156, 0.1);
+      box-shadow: 0 4px 24px rgba(0, 0, 0, 0.4);
+    }
+
+    [data-theme="dark"] #navbar.scrolled .nav-logo-title {
+      color: #f2e8d4;
+    }
+
+    [data-theme="dark"] #navbar.scrolled .nav-logo-sub {
+      color: #a89878;
+    }
+
+    [data-theme="dark"] #navbar.scrolled .nav-links a {
+      color: #d4c9b2;
+    }
+
+    [data-theme="dark"] #navbar.scrolled .nav-links a:hover {
+      color: #E6C89C;
+    }
+
+    [data-theme="dark"] #navbar.scrolled .btn-nav-book {
+      background: linear-gradient(135deg, #E6C89C 0%, #d4b584 100%);
+      color: #1a1510;
+      border-color: transparent;
+      box-shadow: 0 4px 16px rgba(230, 200, 156, 0.25);
+    }
+
+    [data-theme="dark"] #navbar.scrolled #theme-toggle {
+      background: rgba(230, 200, 156, 0.1);
+      border-color: rgba(230, 200, 156, 0.2);
+      color: #E6C89C;
+    }
+
+    [data-theme="dark"] #navbar.scrolled .ham-line {
+      background: #f2e8d4;
+    }
+
+    /* --- Premium Logo Glow Effect in Dark Mode --- */
+    [data-theme="dark"] .nav-logo-img {
+      filter: drop-shadow(0 0 20px rgba(230, 200, 156, 0.4))
+             drop-shadow(0 0 60px rgba(230, 200, 156, 0.15));
+      transition: filter 0.6s ease, transform 0.4s ease;
+    }
+
+    [data-theme="dark"] .nav-logo-link::before {
+      content: '';
+      position: absolute;
+      left: -30px;
+      top: -40px;
+      width: 200px;
+      height: 200px;
+      background: radial-gradient(circle, rgba(230, 200, 156, 0.08) 0%, rgba(230, 200, 156, 0.03) 40%, transparent 70%);
+      pointer-events: none;
+      z-index: -1;
+      border-radius: 50%;
+      animation: logoGlowPulse 4s ease-in-out infinite;
+    }
+
+    @keyframes logoGlowPulse {
+      0%, 100% { opacity: 0.7; transform: scale(1); }
+      50% { opacity: 1; transform: scale(1.15); }
+    }
+
+    [data-theme="dark"] #navbar {
+      background: linear-gradient(180deg, rgba(26, 21, 16, 0.6) 0%, transparent 100%);
+    }
+
+    /* --- Buttons in dark mode --- */
+    [data-theme="dark"] .btn-blue {
+      background: linear-gradient(135deg, #E6C89C 0%, #d4b584 100%);
+      color: #1a1510;
+      box-shadow: 0 4px 20px rgba(230, 200, 156, 0.2);
+    }
+
+    [data-theme="dark"] .btn-blue:hover {
+      background: linear-gradient(135deg, #f0d7b3 0%, #E6C89C 100%);
+      box-shadow: 0 8px 32px rgba(230, 200, 156, 0.35);
+    }
+
+    [data-theme="dark"] .btn-outline {
+      border-color: rgba(230, 200, 156, 0.3);
+      color: #E6C89C;
+    }
+
+    [data-theme="dark"] .btn-outline:hover {
+      background: rgba(230, 200, 156, 0.1);
+      border-color: #E6C89C;
+      color: #f0d7b3;
+    }
+
+    [data-theme="dark"] .btn-submit {
+      background: linear-gradient(135deg, #E6C89C 0%, #d4b584 100%);
+      color: #1a1510;
+      box-shadow: 0 4px 20px rgba(230, 200, 156, 0.2);
+    }
+
+    [data-theme="dark"] .btn-submit:hover {
+      background: linear-gradient(135deg, #f0d7b3 0%, #E6C89C 100%);
+    }
+
+    /* --- Cards, surfaces, borders in dark mode --- */
+    [data-theme="dark"] .svc-card {
+      background: #2a2319;
+      border-color: #3d3428;
+    }
+
+    [data-theme="dark"] .svc-card:hover {
+      box-shadow: 0 24px 64px rgba(0, 0, 0, 0.5);
+      border-color: rgba(230, 200, 156, 0.15);
+    }
+
+    [data-theme="dark"] .svc-icon-wrap {
+      background: rgba(230, 200, 156, 0.1);
+    }
+
+    [data-theme="dark"] .svc-icon {
+      color: #E6C89C;
+    }
+
+    [data-theme="dark"] .svc-book-btn {
+      border-color: rgba(230, 200, 156, 0.3);
+      color: #E6C89C;
+    }
+
+    [data-theme="dark"] .svc-book-btn:hover {
+      background: #E6C89C;
+      color: #1a1510;
+      border-color: #E6C89C;
+    }
+
+    [data-theme="dark"] .testi-card {
+      background: #2a2319;
+      border-color: #3d3428;
+    }
+
+    [data-theme="dark"] .testi-card:hover {
+      border-color: rgba(230, 200, 156, 0.15);
+    }
+
+    [data-theme="dark"] .testi-avatar {
+      background: linear-gradient(135deg, #E6C89C, #d4b584);
+      color: #1a1510;
+    }
+
+    [data-theme="dark"] .why-item {
+      background: #2a2319;
+      border-color: #3d3428;
+    }
+
+    [data-theme="dark"] .why-item:hover {
+      border-color: rgba(230, 200, 156, 0.2);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+    }
+
+    [data-theme="dark"] .why-icon {
+      background: linear-gradient(135deg, #E6C89C, #d4b584);
+      color: #1a1510;
+    }
+
+    [data-theme="dark"] .wstat {
+      background: #2a2319;
+      border-color: #3d3428;
+    }
+
+    [data-theme="dark"] .wstat:hover {
+      border-color: rgba(230, 200, 156, 0.15);
+    }
+
+    [data-theme="dark"] .wstat:nth-child(1) {
+      background: linear-gradient(135deg, #E6C89C 0%, #d4b584 100%);
+      border-color: transparent;
+    }
+
+    [data-theme="dark"] .wstat:nth-child(1) .wstat-num,
+    [data-theme="dark"] .wstat:nth-child(1) .wstat-label {
+      color: #1a1510;
+    }
+
+    [data-theme="dark"] .wstat:nth-child(1) .wstat-icon {
+      color: rgba(26, 21, 16, 0.6);
+    }
+
+    /* --- Contact cards in dark mode --- */
+    [data-theme="dark"] .ccard {
+      background: #2a2319;
+      border-color: #3d3428;
+    }
+
+    [data-theme="dark"] .ccard:hover {
+      border-color: rgba(230, 200, 156, 0.2);
+    }
+
+    [data-theme="dark"] .ccard-icon {
+      background: rgba(230, 200, 156, 0.1);
+      color: #E6C89C;
+    }
+
+    [data-theme="dark"] .ccard-value a {
+      color: #E6C89C !important;
+    }
+
+    /* --- Gallery in dark mode --- */
+    [data-theme="dark"] .gallery-item {
+      border: 1px solid #3d3428;
+    }
+
+    /* --- Floating chips in dark mode --- */
+    [data-theme="dark"] .floating-chip {
+      background: #2a2319;
+      border: 1px solid #3d3428;
+      box-shadow: 0 6px 24px rgba(0, 0, 0, 0.4);
+    }
+
+    [data-theme="dark"] .chip-label {
+      color: #a89878;
+    }
+
+    [data-theme="dark"] .chip-value {
+      color: #f2e8d4;
+    }
+
+    [data-theme="dark"] .chip-value span {
+      color: #E6C89C;
+    }
+
+    [data-theme="dark"] .chip-blue {
+      background: rgba(230, 200, 156, 0.12);
+      color: #E6C89C;
+    }
+
+    [data-theme="dark"] .chip-teal {
+      background: rgba(230, 200, 156, 0.08);
+      color: #d4b584;
+    }
+
+    /* --- Hero section in dark mode --- */
+    [data-theme="dark"] #hero {
+      background: linear-gradient(135deg, #1a1510 0%, #0f0d09 100%);
+    }
+
+    [data-theme="dark"] .hero-card {
+      background: rgba(42, 35, 25, 0.7);
+      border-color: rgba(230, 200, 156, 0.1);
+      box-shadow: 0 30px 60px -12px rgba(0, 0, 0, 0.7);
+    }
+
+    [data-theme="dark"] .avail-badge {
+      background: rgba(42, 35, 25, 0.8);
+      border-color: rgba(230, 200, 156, 0.2);
+    }
+
+    /* --- Counter section in dark mode --- */
+    [data-theme="dark"] .counter-section {
+      background: linear-gradient(135deg, #231e16 0%, #1a1510 50%, #231e16 100%);
+    }
+
+    /* --- Booking section in dark mode --- */
+    [data-theme="dark"] #booking {
+      background: linear-gradient(135deg, #231e16 0%, #1a1510 50%, #231e16 100%);
+    }
+
+    [data-theme="dark"] .form-card {
+      background: #2a2319;
+      box-shadow: 0 16px 48px rgba(0, 0, 0, 0.5);
+    }
+
+    [data-theme="dark"] .finput,
+    [data-theme="dark"] .fselect,
+    [data-theme="dark"] .ftextarea {
+      background: #1a1510;
+      border-color: #3d3428;
+      color: #f2e8d4;
+    }
+
+    [data-theme="dark"] .finput:focus,
+    [data-theme="dark"] .fselect:focus,
+    [data-theme="dark"] .ftextarea:focus {
+      border-color: #E6C89C;
+      box-shadow: 0 0 0 3px rgba(230, 200, 156, 0.1);
+    }
+
+    [data-theme="dark"] .finput::placeholder,
+    [data-theme="dark"] .ftextarea::placeholder {
+      color: #6b5c45;
+    }
+
+    /* --- Trust bar in dark mode --- */
+    [data-theme="dark"] .trust-bar {
+      background: linear-gradient(135deg, #231e16 0%, #2e271d 50%, #231e16 100%);
+      border-top: 1px solid rgba(230, 200, 156, 0.08);
+      border-bottom: 1px solid rgba(230, 200, 156, 0.08);
+    }
+
+    /* --- About section badge in dark mode --- */
+    [data-theme="dark"] .about-exp-badge {
+      background: linear-gradient(135deg, #E6C89C 0%, #d4b584 100%);
+      color: #1a1510;
+    }
+
+    [data-theme="dark"] .about-exp-num {
+      color: #1a1510;
+    }
+
+    [data-theme="dark"] .about-exp-num span {
+      color: rgba(26, 21, 16, 0.6);
+    }
+
+    [data-theme="dark"] .about-exp-label {
+      color: #1a1510;
+      opacity: 0.7;
+    }
+
+    [data-theme="dark"] .hl-item {
+      background: #2a2319;
+      border-color: #3d3428;
+    }
+
+    [data-theme="dark"] .hl-icon {
+      background: rgba(230, 200, 156, 0.1);
+      color: #E6C89C;
+    }
+
+    /* --- Mobile menu in dark mode --- */
+    [data-theme="dark"] #mobile-menu {
+      background: #1a1510;
+    }
+
+    [data-theme="dark"] #mobile-menu a {
+      color: #f2e8d4;
+      border-bottom-color: #3d3428;
+    }
+
+    [data-theme="dark"] #mobile-menu a:hover {
+      color: #E6C89C;
+    }
+
+    /* --- Section tags in dark mode --- */
+    [data-theme="dark"] .sec-tag {
+      color: #E6C89C;
+    }
+
+    [data-theme="dark"] .sec-tag-line {
+      background: #E6C89C;
+    }
+
+    /* --- WhatsApp button in dark mode --- */
+    [data-theme="dark"] .wa-btn {
+      background: #25D366;
+    }
+
+    [data-theme="dark"] .wa-btn:hover {
+      background: #22c55e;
+    }
+
+    /* --- Map wrapper in dark mode --- */
+    [data-theme="dark"] .map-wrap {
+      border-color: #3d3428;
+    }
+
+    /* --- Scroll progress in dark mode --- */
+    [data-theme="dark"] #scroll-progress {
+      background: linear-gradient(90deg, #E6C89C, #d4b584);
+    }
+
+    /* --- Services edge fades for dark mode --- */
+    [data-theme="dark"] .services-horiz-wrap::before {
+      background: linear-gradient(to right, var(--bg), transparent);
+    }
+
+    [data-theme="dark"] .services-horiz-wrap::after {
+      background: linear-gradient(to left, var(--bg), transparent);
+    }
+
+    /* --- Orb adjustments in dark mode --- */
+    [data-theme="dark"] .orb {
+      opacity: 0.08;
+    }
+
+    /* --- Section blob adjustments in dark mode --- */
+    [data-theme="dark"] .section-blob {
+      opacity: 0.02;
+    }
+
+    /* --- Form success in dark mode --- */
+    [data-theme="dark"] .form-success {
+      background: rgba(230, 200, 156, 0.08);
+      border-color: rgba(230, 200, 156, 0.15);
+    }
+
+    [data-theme="dark"] .form-success-title {
+      color: #E6C89C;
+    }
+
+    /* --- Carousel controls in dark mode --- */
+    [data-theme="dark"] .ctrl-btn {
+      background: #2a2319;
+      border-color: #3d3428;
+      color: #d4c9b2;
+    }
+
+    [data-theme="dark"] .ctrl-btn:hover {
+      background: #E6C89C;
+      border-color: #E6C89C;
+      color: #1a1510;
+    }
+
+    [data-theme="dark"] .ctrl-dot {
+      background: #3d3428;
+    }
+
+    [data-theme="dark"] .ctrl-dot.active {
+      background: #E6C89C;
+    }
+
+    /* --- Footer in dark mode --- */
+    [data-theme="dark"] .footer-brand {
+      color: #f2e8d4;
+    }
+
+    [data-theme="dark"] .fsoc-link {
+      background: rgba(230, 200, 156, 0.06);
+      border-color: rgba(230, 200, 156, 0.1);
+      color: #a89878;
+    }
+
+    [data-theme="dark"] .fsoc-link:hover {
+      background: #E6C89C;
+      border-color: #E6C89C;
+      color: #1a1510;
+    }
+
+    /* --- Ambient page glow from logo in dark mode --- */
+    [data-theme="dark"] body::before {
+      content: '';
+      position: fixed;
+      top: -100px;
+      left: -50px;
+      width: 500px;
+      height: 400px;
+      background: radial-gradient(ellipse, rgba(230, 200, 156, 0.04) 0%, rgba(230, 200, 156, 0.015) 40%, transparent 70%);
+      pointer-events: none;
+      z-index: 0;
+      animation: ambientGlow 6s ease-in-out infinite;
+    }
+
+    @keyframes ambientGlow {
+      0%, 100% { opacity: 0.6; transform: scale(1) translate(0, 0); }
+      50% { opacity: 1; transform: scale(1.1) translate(10px, 5px); }
+    }
+
   </style>
 </head>
 
@@ -3117,7 +3698,7 @@
             <div class="chip-icon chip-blue"><i data-lucide="shield-check" width="17" height="17"></i></div>
             <div>
               <div class="chip-label">Treatments Done</div>
-              <div class="chip-value">5,000+</div>
+              <div class="chip-value">5,000<span>+</span></div>
             </div>
           </div>
 
@@ -3137,7 +3718,7 @@
             <div class="chip-icon chip-teal"><i data-lucide="star" width="17" height="17"></i></div>
             <div>
               <div class="chip-label">Patient Rating</div>
-              <div class="chip-value">4.9 / 5.0</div>
+              <div class="chip-value">4.9 <span>/</span> 5.0</div>
             </div>
           </div>
         </div>
@@ -3174,7 +3755,7 @@
         <div class="about-img-wrap reveal-left">
           <img src="images/doctor.jpg" alt="Dr. Manisha — Dental Surgeon" class="about-img" />
           <div class="about-exp-badge">
-            <div class="about-exp-num">10+</div>
+            <div class="about-exp-num">10<span>+</span></div>
             <div class="about-exp-label">Years of Excellence</div>
           </div>
         </div>
@@ -3897,9 +4478,10 @@
     ];
     const ws = document.getElementById('why-stats');
     WSTATS.forEach((s, i) => {
+      const numHtml = s.num.replace(/([^0-9,.k]+)/g, '<span>$1</span>');
       ws.innerHTML += `<div class="wstat reveal s${i + 1}">
     <i data-lucide="${s.icon}" class="wstat-icon" width="28" height="28"></i>
-    <div class="wstat-num">${s.num}</div>
+    <div class="wstat-num">${numHtml}</div>
     <div class="wstat-label">${s.label}</div>
   </div>`;
     });
