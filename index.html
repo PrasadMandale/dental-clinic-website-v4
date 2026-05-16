@@ -4727,6 +4727,15 @@
       const step = cardWidth + gap;
 
       function updateSlider() {
+        if (window.innerWidth <= 768) {
+          gsap.set(track, { x: 0 }); // Prevent GSAP translation on mobile
+          const maxScrollMobile = track.scrollWidth - track.clientWidth;
+          if (Math.abs(currentX) > maxScrollMobile) currentX = -maxScrollMobile;
+          if (currentX > 0) currentX = 0;
+          track.scrollTo({ left: Math.abs(currentX), behavior: 'smooth' });
+          return;
+        }
+
         const trackWidth = track.scrollWidth;
         const visibleWidth = window.innerWidth;
         const maxScroll = Math.max(0, trackWidth - visibleWidth + 160);
@@ -4744,16 +4753,44 @@
 
       if (btnPrev && btnNext && track) {
         btnNext.addEventListener('click', () => {
-          currentX -= step;
+          if (window.innerWidth <= 768) {
+            const mobileStep = 280 + 16;
+            currentX = -(track.scrollLeft + mobileStep);
+          } else {
+            currentX -= step;
+          }
           updateSlider();
         });
         btnPrev.addEventListener('click', () => {
-          currentX += step;
+          if (window.innerWidth <= 768) {
+            const mobileStep = 280 + 16;
+            currentX = -(Math.max(0, track.scrollLeft - mobileStep));
+          } else {
+            currentX += step;
+          }
           updateSlider();
         });
       }
 
-      window.addEventListener('resize', updateSlider);
+      if (track && fill) {
+        track.addEventListener('scroll', () => {
+          if (window.innerWidth <= 768) {
+            const maxScrollMobile = track.scrollWidth - track.clientWidth;
+            const progress = maxScrollMobile > 0 ? (track.scrollLeft / maxScrollMobile) * 100 : 100;
+            gsap.to(fill, { width: progress + '%', duration: 0.1 });
+          }
+        });
+      }
+
+      window.addEventListener('resize', () => {
+        if (window.innerWidth <= 768) {
+          gsap.set(track, { x: 0 });
+        } else {
+          currentX = 0;
+          track.scrollLeft = 0;
+        }
+        updateSlider();
+      });
     })();
 
     // ─── WHY CHOOSE US ─────────────────────────────────────────────
