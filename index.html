@@ -15,7 +15,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
-    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@400;700;900&family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&family=DM+Serif+Display:ital@0;1&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@400;700;900&family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&family=DM+Serif+Display:ital@0;1&family=Oswald:wght@200..700&display=swap"
     rel="stylesheet" />
   <!-- Icons -->
   <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
@@ -55,6 +55,7 @@
       --card: #ffffff;
       --heading-font: 'Montserrat', sans-serif;
       --number-font: 'Bodoni Moda', serif;
+      --stat-font: 'Oswald', sans-serif;
     }
 
     [data-theme="dark"] {
@@ -857,12 +858,12 @@
     }
 
     .hero-stat-num {
-      font-family: var(--number-font);
+      font-family: var(--stat-font);
       font-size: 3.2rem;
       font-weight: 700;
       color: var(--accent);
       line-height: 1;
-      font-style: italic;
+      font-style: normal;
     }
 
     .hero-stat-num span {
@@ -1030,12 +1031,13 @@
     }
 
     .chip-value {
-      font-family: var(--number-font);
+      font-family: var(--stat-font);
       font-size: 1.1rem;
       color: #1e293b;
       font-weight: 700;
       line-height: 1.2;
       white-space: nowrap;
+      font-style: normal;
     }
 
     .chip-value span {
@@ -1139,11 +1141,11 @@
     }
 
     .about-exp-num {
-      font-family: var(--number-font);
+      font-family: var(--stat-font);
       font-size: 3.2rem;
       font-weight: 700;
       line-height: 1;
-      font-style: italic;
+      font-style: normal;
     }
 
     .about-exp-num span {
@@ -1355,7 +1357,6 @@
     }
 
     .svc-card:hover {
-      transform: translateY(-8px) scale(1.01);
       box-shadow: 0 24px 64px rgba(90, 75, 55, .18)
     }
 
@@ -1374,7 +1375,7 @@
     }
 
     .svc-card:hover .svc-img {
-      transform: scale(1.08)
+      /* Handled by GSAP for premium feel */
     }
 
     .svc-img-overlay {
@@ -1581,11 +1582,12 @@
     }
 
     .wstat-num {
-      font-family: var(--number-font);
+      font-family: var(--stat-font);
       font-size: 2.6rem;
       font-weight: 700;
       color: var(--text);
       line-height: 1;
+      font-style: normal;
     }
 
     .wstat-num span {
@@ -1844,10 +1846,11 @@
     }
 
     .binfo-value {
-      font-family: var(--number-font);
+      font-family: var(--heading-font);
       font-size: 1rem;
       color: white;
       font-weight: 500;
+      line-height: 1.5;
     }
 
     .form-card {
@@ -2046,11 +2049,9 @@
       display: flex;
       gap: 16px;
       align-items: flex-start;
-      transition: all var(--t)
     }
 
     .ccard:hover {
-      box-shadow: var(--shadow-md);
       border-color: var(--blue-200)
     }
 
@@ -2080,10 +2081,11 @@
     }
 
     .ccard-value {
-      font-family: var(--number-font);
+      font-family: var(--heading-font);
       font-size: 1rem;
       color: var(--text);
-      font-weight: 600;
+      font-weight: 500;
+      line-height: 1.5;
     }
 
     .ccard-sub {
@@ -2098,17 +2100,14 @@
       border-radius: var(--radius);
       padding: 16px 24px;
       display: flex;
-      align-items: center;
       gap: 16px;
+      align-items: center;
       text-decoration: none;
-      transition: all var(--t);
       font-weight: 600
     }
 
     .wa-btn:hover {
       background: #b39f7a;
-      transform: translateY(-2px);
-      box-shadow: 0 8px 24px rgba(139, 117, 86, .35)
     }
 
     .wa-icon-wrap {
@@ -2372,12 +2371,12 @@
     }
 
     .counter-num {
-      font-family: var(--number-font);
+      font-family: var(--stat-font);
       font-size: clamp(3.2rem, 6vw, 5.2rem);
-      font-weight: 600;
+      font-weight: 700;
       color: white;
       line-height: 1;
-      font-style: italic;
+      font-style: normal;
     }
 
     .counter-num span {
@@ -4070,12 +4069,12 @@
   <section id="contact">
     <div class="sw">
       <div style="text-align:center">
-        <div class="sec-tag reveal" style="justify-content:center"><span class="sec-tag-line"></span>Get In Touch</div>
-        <h2 class="sec-title reveal s1">Find & Contact Us</h2>
+        <div class="sec-tag" style="justify-content:center"><span class="sec-tag-line"></span>Get In Touch</div>
+        <h2 class="sec-title">Find & Contact Us</h2>
       </div>
       <div class="contact-grid">
         <div class="contact-cards">
-          <div class="ccard reveal s1">
+          <div class="ccard">
             <div class="ccard-icon"><i data-lucide="map-pin" width="22" height="22"></i></div>
             <div>
               <div class="ccard-label">Address</div>
@@ -4083,7 +4082,7 @@
                 Kalat Nagar, Wakad, Pune, Maharashtra 411057</div>
             </div>
           </div>
-          <div class="ccard reveal s2">
+          <div class="ccard">
             <div class="ccard-icon"><i data-lucide="phone" width="22" height="22"></i></div>
             <div>
               <div class="ccard-label">Phone</div>
@@ -4091,7 +4090,7 @@
               <div class="ccard-sub">Call or WhatsApp anytime</div>
             </div>
           </div>
-          <div class="ccard reveal s3">
+          <div class="ccard">
             <div class="ccard-icon"><i data-lucide="clock" width="22" height="22"></i></div>
             <div>
               <div class="ccard-label">Timings</div>
@@ -4099,7 +4098,7 @@
               <div class="ccard-sub">10:00 AM – 2:00 PM &nbsp;|&nbsp; 5:00 PM – 9:00 PM</div>
             </div>
           </div>
-          <a href="https://wa.me/919588427319" target="_blank" class="wa-btn reveal s4">
+          <a href="https://wa.me/919588427319" target="_blank" class="wa-btn">
             <div class="wa-icon-wrap">
               <svg width="24" height="24" viewBox="0 0 24 24" fill="white">
                 <path
@@ -4115,7 +4114,7 @@
             </div>
           </a>
         </div>
-        <div class="map-wrap reveal-right">
+        <div class="map-wrap">
           <iframe src="https://www.google.com/maps?q=18.6009739,73.7630533&z=17&output=embed" loading="lazy"
             title="Clinic Location" allowfullscreen></iframe>
         </div>
@@ -4409,7 +4408,7 @@
     <div class="svc-img-wrap">
   ${s.img.endsWith('.mp4')
           ? `
-        <video class="svc-img" autoplay muted loop playsinline>
+        <video class="svc-img" muted loop playsinline>
           <source src="${s.img}" type="video/mp4">
         </video>
       `
@@ -4429,6 +4428,52 @@
     });
     lucide.createIcons();
     setupRevealAnimations();
+
+    // Video play/pause on hover + premium scale effect
+    document.querySelectorAll('.svc-card').forEach(card => {
+      const video = card.querySelector('video');
+      const img = card.querySelector('.svc-img');
+      
+      card.addEventListener('mouseenter', () => {
+        if (video) {
+          video.play().catch(e => console.log('Video play interrupted'));
+        }
+        gsap.to(card, { 
+          scale: 1.04, 
+          duration: 0.5, 
+          ease: 'power2.out',
+          overwrite: 'auto'
+        });
+        if (img) {
+          gsap.to(img, { 
+            scale: 1.1, 
+            duration: 0.7, 
+            ease: 'power2.out',
+            overwrite: 'auto'
+          });
+        }
+      });
+      
+      card.addEventListener('mouseleave', () => {
+        if (video) {
+          video.pause();
+        }
+        gsap.to(card, { 
+          scale: 1, 
+          duration: 0.5, 
+          ease: 'power2.out',
+          overwrite: 'auto'
+        });
+        if (img) {
+          gsap.to(img, { 
+            scale: 1, 
+            duration: 0.7, 
+            ease: 'power2.out',
+            overwrite: 'auto'
+          });
+        }
+      });
+    });
 
     // ─── SERVICES (Pinned Horizontal Scroll) ───────────────────────
     (function () {
@@ -4948,7 +4993,7 @@
     }, { passive: true });
 
     // H. Section blob injection
-    ['#about', '#services', '#why', '#testimonials', '#gallery', '#contact'].forEach((sel, i) => {
+    ['#about', '#services', '#why', '#testimonials', '#gallery'].forEach((sel, i) => {
       const section = document.querySelector(sel);
       if (!section) return;
       section.style.position = 'relative';
@@ -5114,7 +5159,7 @@
     })();
 
     // Q. Smooth section color transitions on scroll
-    const sections = document.querySelectorAll('section');
+    const sections = document.querySelectorAll('section:not(#contact)');
     sections.forEach(sec => {
       gsap.fromTo(sec,
         { '--section-opacity': 0 },
